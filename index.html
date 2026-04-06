@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pizzeria del Lago - Nel cuore di Lecco, pizza italiana autentica con vista sul Lago di Como. Sapori locali, ingredienti freschi.">
+    <title>Pizzeria del Lago | Lecco - Lago di Como</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-red: #C41E3A;
+            --dark-red: #8B0000;
+            --cream: #FDF5E6;
+            --gold: #D4AF37;
+            --dark-green: #355E3B;
+            --charcoal: #2C2C2C;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--charcoal);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(44, 44, 44, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--cream);
+            font-size: 0.9rem;
+            display: block;
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            color: var(--cream) !important;
+            font-weight: 400;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
+                        url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-red);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.4);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 0;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .section-subtitle {
+            color: var(--primary-red);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 1.5rem auto 3rem;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--cream);
+        }
+
+        .about-img {
+            border-radius: 0;
+            box-shadow: 20px 20px 0 var(--primary-red);
+        }
+
+        .about-text {
+            padding: 2rem;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920') center/cover fixed;
+            position: relative;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 44, 44, 0.95);
+        }
+
+        .menu-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-section .section-title,
+        .menu-section .section-subtitle {
+            color: var(--cream);
+        }
+
+        .menu-section .section-subtitle {
+            color: var(--gold);
+        }
+
+        /* Menu Tabs */
+        .menu-tabs {
+            margin-bottom: 3rem;
+        }
+
+        .menu-tabs .nav-link {
+            color: var(--cream) !important;
+            border: 2px solid var(--gold);
+            border-radius: 0;
+            padding: 12px 30px;
+            margin: 0 10px 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-tabs .nav-link.active {
+            background: var(--gold);
+            color: var(--charcoal) !important;
+        }
+
+        .menu-tabs .nav-link:hover:not(.active) {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        /* Menu Items */
+        .menu-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--gold);
+            transform: translateX(10px);
+        }
+
+        .menu-item h5 {
+            color: var(--cream);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item .price {
+            color: var(--gold);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .menu-item p {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .menu-item .badge-local {
+            background: var(--dark-green);
+            color: white;
+            font-size: 0.7rem;
+            padding: 5px 10px;
+            border-radius: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Specials Section */
+        .specials-section {
+            background: var(--cream);
+        }
+
+        .special-card {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .special-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .special-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .special-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: white;
+            transform: translateY(60px);
+            transition: transform 0.3s ease;
+        }
+
+        .special-card:hover .special-card-overlay {
+            transform: translateY(0);
+        }
+
+        .special-card-overlay h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .special-card-overlay p {
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .special-card:hover .special-card-overlay p {
+            opacity: 1;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: var(--charcoal);
+            padding: 80px 0;
+        }
+
+        .gallery-section .section-title,
+        .gallery-section .section-subtitle {
+            color: var(--cream);
+        }
+
+        .gallery-section .section-subtitle {
+            color: var(--gold);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(196, 30, 58, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: linear-gradient(rgba(196, 30, 58, 0.9), rgba(139, 0, 0, 0.9)),
+                        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920') center/cover fixed;
+            color: white;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 0;
+            text-align: center;
+        }
+
+        .testimonial-card .stars {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-card .author {
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .testimonial-card .location {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Location Section */
+        .location-section {
+            background: var(--cream);
+        }
+
+        .info-card {
+            background: white;
+            padding: 40px;
+            height: 100%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card h5 {
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .map-container {
+            height: 450px;
+            background: #ddd;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Reservation Section */
+        .reservation-section {
+            background: var(--charcoal);
+            color: white;
+        }
+
+        .reservation-section .section-subtitle {
+            color: var(--gold);
+        }
+
+        .form-control-custom {
+            background: transparent;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            border-radius: 0;
+            padding: 15px 20px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-control-custom:focus {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--gold);
+            color: white;
+            box-shadow: none;
+        }
+
+        .form-control-custom::placeholder {
+            color: #888;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 80px 0 30px;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h6 {
+            color: var(--cream);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            width: 45px;
+            height: 45px;
+            background: rgba(212, 175, 55, 0.2);
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            margin-top: 50px;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background: var(--dark-red);
+            transform: translateY(-5px);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        /* Modal Styling */
+        .modal-content {
+            border-radius: 0;
+            border: none;
+        }
+
+        .modal-header {
+            background: var(--primary-red);
+            color: white;
+            border-radius: 0;
+        }
+
+        .modal-header .btn-close {
+            filter: invert(1);
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1100;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .about-img {
+                margin-bottom: 3rem;
+                box-shadow: 10px 10px 0 var(--primary-red);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .menu-tabs .nav-link {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                Pizzeria del Lago
+                <span>Lecco - Dal 1985</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list text-white fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Chi Siamo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#specials">Specialità</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Galleria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contatti</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary-custom" href="#reservation" data-bs-toggle="modal" data-bs-target="#reservationModal">Prenota</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="subtitle">Vista sul Lago di Como</p>
+            <h1>Pizzeria del Lago</h1>
+            <p>Dal 1985, nel cuore di Lecco, con la splendida vista sul Lago di Como, serviamo pizze italiane autentiche preparate con ricette tradizionali tramandate di generazione in generazione.</p>
+            <a href="#menu" class="btn btn-primary-custom me-3">Scopri il Menu</a>
+            <a href="#about" class="btn btn-outline-custom">La Nostra Storia</a>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#about" class="text-white">
+                <i class="bi bi-chevron-double-down fs-3"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=800" alt="Pizzaiolo" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-text">
+                        <p class="section-subtitle">La Nostra Storia</p>
+                        <h2 class="section-title">Tre Generazioni, Una Passione</h2>
+                        <div class="section-divider m-0 mb-4"></div>
+                        <p class="lead mb-4">Fondata nel 1985 dal nostro nonno Giovanni Rossi, la Pizzeria del Lago rappresenta una delle tradizioni pizzaiole più radicate di Lecco.</p>
+                        <p class="mb-4">Proprio sulle rive del Lago di Como, prepariamo le nostre pizze con i formaggi freschi Taleggio della Valsassina, oli d'oliva locali e ingredienti stagionali, offrendo i migliori esempi della cucina lombarda.</p>
+                        <p class="mb-4">Ogni pizza cotta nel nostro tradizionale forno a legna in mattoni porta con sé la maestria e l'amore tramandati dalla nostra famiglia per generazioni.</p>
+
+                        <div class="row mt-5">
+                            <div class="col-4 text-center">
+                                <h3 class="text-danger fw-bold mb-0">40+</h3>
+                                <p class="small text-muted">Anni di Esperienza</p>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h3 class="text-danger fw-bold mb-0">25+</h3>
+                                <p class="small text-muted">Varietà di Pizza</p>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h3 class="text-danger fw-bold mb-0">100K+</h3>
+                                <p class="small text-muted">Clienti Soddisfatti</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="row mt-5 pt-5">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="bi bi-fire"></i>
+                        </div>
+                        <h5>Forno a Legna</h5>
+                        <p>Pizze cotte alla perfezione nel nostro tradizionale forno in mattoni a 450°C.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <h5>Ingredienti Locali</h5>
+                        <p>Taleggio dalla Valsassina, olio d'oliva da Como, verdure fresche dalle fattorie locali.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                        <h5>Ricette di Famiglia</h5>
+                        <p>Ricette tradizionali italiane tramandate per tre generazioni, piene di segreti.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-subtitle">I Nostri Sapori</p>
+                <h2 class="section-title">Menu</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Menu Tabs -->
+            <ul class="nav nav-pills justify-content-center menu-tabs" id="menuTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pizza-tab" data-bs-toggle="pill" data-bs-target="#pizza" type="button">
+                        <i class="bi bi-circle-fill me-2" style="font-size: 0.5rem;"></i>Pizze
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="antipasti-tab" data-bs-toggle="pill" data-bs-target="#antipasti" type="button">
+                        <i class="bi bi-circle-fill me-2" style="font-size: 0.5rem;"></i>Antipasti
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="dolci-tab" data-bs-toggle="pill" data-bs-target="#dolci" type="button">
+                        <i class="bi bi-circle-fill me-2" style="font-size: 0.5rem;"></i>Dolci
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="bevande-tab" data-bs-toggle="pill" data-bs-target="#bevande" type="button">
+                        <i class="bi bi-circle-fill me-2" style="font-size: 0.5rem;"></i>Bevande
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Menu Content -->
+            <div class="tab-content mt-5" id="menuTabContent">
+                <!-- Pizza Tab -->
+                <div class="tab-pane fade show active" id="pizza" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Margherita Classica</h5>
+                                    <p>Salsa di pomodoro San Marzano, fior di latte, basilico fresco</p>
+                                </div>
+                                <span class="price">€12</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Pizza del Lago <span class="badge-local">Locale</span></h5>
+                                    <p>Taleggio, missoltini (pesce essiccato del lago), capperi, olive</p>
+                                </div>
+                                <span class="price">€18</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Quattro Formaggi</h5>
+                                    <p>Mozzarella, gorgonzola, taleggio della Valsassina, parmigiano reggiano</p>
+                                </div>
+                                <span class="price">€16</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Diavola</h5>
+                                    <p>Salsa di pomodoro, mozzarella, salame calabrese piccante, capperi</p>
+                                </div>
+                                <span class="price">€14</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Prosciutto e Funghi</h5>
+                                    <p>Salsa di pomodoro, mozzarella, prosciutto di Parma, funghi freschi</p>
+                                </div>
+                                <span class="price">€15</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Valsassina <span class="badge-local">Locale</span></h5>
+                                    <p>Salsa bianca, Taleggio DOP, noci, miele, rucola</p>
+                                </div>
+                                <span class="price">€17</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Capricciosa</h5>
+                                    <p>Pomodoro, mozzarella, prosciutto cotto, funghi, carciofi, olive</p>
+                                </div>
+                                <span class="price">€15</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Napoletana</h5>
+                                    <p>Pomodoro, mozzarella, acciughe, capperi, origano</p>
+                                </div>
+                                <span class="price">€14</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Bresaola della Valtellina <span class="badge-local">Locale</span></h5>
+                                    <p>Mozzarella, rucola, bresaola IGP, parmigiano, limone</p>
+                                </div>
+                                <span class="price">€18</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Ortolana</h5>
+                                    <p>Pomodoro, mozzarella, verdure grigliate, pesto</p>
+                                </div>
+                                <span class="price">€14</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Antipasti Tab -->
+                <div class="tab-pane fade" id="antipasti" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Bruschetta Classica</h5>
+                                    <p>Pane tostato, pomodoro, aglio, basilico, olio d'oliva</p>
+                                </div>
+                                <span class="price">€8</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Carpaccio di Bresaola <span class="badge-local">Locale</span></h5>
+                                    <p>Bresaola affettata finemente, rucola, parmigiano, salsa al limone</p>
+                                </div>
+                                <span class="price">€14</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Tagliere di Formaggi <span class="badge-local">Locale</span></h5>
+                                    <p>Selezione di formaggi della Valsassina: Taleggio, Zincarlin, Nostrano</p>
+                                </div>
+                                <span class="price">€16</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Polenta e Missoltini <span class="badge-local">Locale</span></h5>
+                                    <p>Polenta cremosa, missoltini essiccati del Lago di Como</p>
+                                </div>
+                                <span class="price">€15</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Burrata Pugliese</h5>
+                                    <p>Burrata fresca, pomodorini, basilico, glassa balsamica</p>
+                                </div>
+                                <span class="price">€14</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Olive all'Ascolana</h5>
+                                    <p>Olive ripiene e fritte, maionese al limone</p>
+                                </div>
+                                <span class="price">€10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dolci Tab -->
+                <div class="tab-pane fade" id="dolci" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Tiramisù della Nonna</h5>
+                                    <p>Ricetta tradizionale, mascarpone, espresso, cacao</p>
+                                </div>
+                                <span class="price">€8</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Panna Cotta</h5>
+                                    <p>Crema alla vaniglia, salsa ai frutti di bosco</p>
+                                </div>
+                                <span class="price">€7</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Cannoli Siciliani</h5>
+                                    <p>Pasta croccante, crema di ricotta, gocce di cioccolato</p>
+                                </div>
+                                <span class="price">€7</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Affogato al Caffè</h5>
+                                    <p>Gelato alla vaniglia, espresso caldo</p>
+                                </div>
+                                <span class="price">€6</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Torta della Casa</h5>
+                                    <p>Dolce speciale del giorno - chiedete al personale</p>
+                                </div>
+                                <span class="price">€8</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Gelato Artigianale</h5>
+                                    <p>3 gusti a scelta di gelato fatto in casa</p>
+                                </div>
+                                <span class="price">€6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bevande Tab -->
+                <div class="tab-pane fade" id="bevande" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Vino della Casa (Bicchiere)</h5>
+                                    <p>Vino rosso o bianco selezionato dalla regione Lombardia</p>
+                                </div>
+                                <span class="price">€5</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Vino della Casa (Bottiglia)</h5>
+                                    <p>Vino rosso o bianco selezionato dalla regione Lombardia</p>
+                                </div>
+                                <span class="price">€22</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Aperol Spritz</h5>
+                                    <p>Aperol, prosecco, soda, arancia</p>
+                                </div>
+                                <span class="price">€8</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Negroni</h5>
+                                    <p>Gin, campari, vermouth rosso</p>
+                                </div>
+                                <span class="price">€9</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Birra Artigianale</h5>
+                                    <p>Birra artigianale italiana locale (0.33L)</p>
+                                </div>
+                                <span class="price">€6</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Limonata della Casa</h5>
+                                    <p>Limone fresco spremuto, menta, sciroppo di zucchero</p>
+                                </div>
+                                <span class="price">€5</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Espresso / Cappuccino</h5>
+                                    <p>Caffè italiano preparato con cura</p>
+                                </div>
+                                <span class="price">€3/€4</span>
+                            </div>
+                            <div class="menu-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>Acqua Minerale</h5>
+                                    <p>Naturale o Frizzante (0.75L)</p>
+                                </div>
+                                <span class="price">€3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-custom" data-bs-toggle="modal" data-bs-target="#fullMenuModal">
+                    <i class="bi bi-file-pdf me-2"></i>Scarica Menu Completo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specials Section -->
+    <section class="specials-section" id="specials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-subtitle">Ispirate da Lecco</p>
+                <h2 class="section-title">Le Nostre Specialità</h2>
+                <div class="section-divider"></div>
+                <p class="lead">Le nostre pizze signature ispirate ai sapori unici del Lago di Como e della zona di Lecco</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="special-card" data-bs-toggle="modal" data-bs-target="#specialModal1">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600" alt="Pizza del Lago">
+                        <div class="special-card-overlay">
+                            <span class="badge bg-success mb-2">Più Popolare</span>
+                            <h4>Pizza del Lago</h4>
+                            <p>Missoltini dal Lago di Como, formaggio Taleggio, capperi e olio d'oliva locale. Tutti i sapori del lago in un piatto.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="special-card" data-bs-toggle="modal" data-bs-target="#specialModal2">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600" alt="Valsassina">
+                        <div class="special-card-overlay">
+                            <span class="badge bg-warning text-dark mb-2">Consiglio dello Chef</span>
+                            <h4>La Valsassina</h4>
+                            <p>Taleggio DOP dalla valle della Valsassina, miele, noci e rucola fresca. Armonia di dolce e salato.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="special-card" data-bs-toggle="modal" data-bs-target="#specialModal3">
+                        <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600" alt="Resegone">
+                        <div class="special-card-overlay">
+                            <span class="badge bg-danger mb-2">Novità</span>
+                            <h4>Monte Resegone</h4>
+                            <p>Pizza ispirata alla montagna: bresaola, funghi porcini, fontina e olio al tartufo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-subtitle">Festa Visiva</p>
+                <h2 class="section-title">Galleria</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600" alt="Pizza">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=1200">
+                        <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=600" alt="Preparazione Pizza">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=1200">
+                        <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=600" alt="Forno">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600" alt="Ristorante">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?w=1200">
+                        <img src="https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?w=600" alt="Lago di Como">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=1200">
+                        <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=600" alt="Ingredienti">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-subtitle" style="color: var(--gold);">I Nostri Ospiti</p>
+                <h2 class="section-title" style="color: white;">Cosa Dicono?</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card">
+                                    <div class="stars">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p>"Il posto che visito sempre quando vengo a Lecco. La Pizza del Lago è davvero unica - hanno raccolto tutti i sapori del Lago di Como in una fetta. Mangiare con la vista sul lago è un piacere a parte."</p>
+                                    <div class="author">Marco Bianchi</div>
+                                    <div class="location">Milano, Italia</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card">
+                                    <div class="stars">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p>"Ho mangiato tanta pizza in Italia ma qui è diverso. L'impasto è perfetto, gli ingredienti sono super freschi. La pizza con il Taleggio è stata la migliore della mia vita. Anche il personale è molto cordiale."</p>
+                                    <div class="author">Elena Kowalski</div>
+                                    <div class="location">Varsavia, Polonia</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card">
+                                    <div class="stars">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p>"Aprono il loro ristorante, dove la famiglia viene da tre generazioni, anche ai turisti con lo stesso calore. L'aroma della pizza cotta nel forno a legna ti avvolge appena entri dalla porta."</p>
+                                    <div class="author">Thomas Mueller</div>
+                                    <div class="location">Monaco, Germania</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+                <div class="carousel-indicators mt-4" style="position: relative;">
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section" id="contact">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-subtitle">Trovaci</p>
+                <h2 class="section-title">Posizione e Contatti</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <div class="info-card text-center">
+                        <i class="bi bi-geo-alt"></i>
+                        <h5>Indirizzo</h5>
+                        <p class="mb-0">Via Lungolago Cesare Battisti, 15<br>23900 Lecco (LC), Italia</p>
+                        <a href="https://maps.google.com/?q=Lecco+Italy" target="_blank" class="btn btn-sm btn-outline-danger mt-3">Indicazioni Stradali</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-card text-center">
+                        <i class="bi bi-clock"></i>
+                        <h5>Orari di Apertura</h5>
+                        <p class="mb-1"><strong>Martedì - Domenica:</strong> 12:00 - 15:00</p>
+                        <p class="mb-1">18:30 - 23:00</p>
+                        <p class="mb-0 text-danger"><strong>Lunedì:</strong> Chiuso</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-card text-center">
+                        <i class="bi bi-telephone"></i>
+                        <h5>Contatti</h5>
+                        <p class="mb-1"><a href="tel:+390341123456" class="text-decoration-none text-dark">+39 0341 123 456</a></p>
+                        <p class="mb-0"><a href="mailto:info@pizzeriadellago.it" class="text-decoration-none text-dark">info@pizzeriadellago.it</a></p>
+                        <a href="https://wa.me/390341123456" target="_blank" class="btn btn-sm btn-success mt-3">
+                            <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22280.85089755656!2d9.380952!3d45.853321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47869e4e3c8c2e2f%3A0x4093f2f8e0d1c5f4!2sLecco%2C%20Province%20of%20Lecco%2C%20Italy!5e0!3m2!1sen!2sus!4v1703880000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="reservation-section" id="reservation">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <p class="section-subtitle">Prenotazione</p>
+                    <h2 class="section-title" style="color: white;">Prenota un Tavolo</h2>
+                    <div class="section-divider m-0 mb-4"></div>
+                    <p class="lead" style="color: #ccc;">Prenota il tuo posto in anticipo per una cena indimenticabile con la magnifica vista sul Lago di Como.</p>
+                    <ul class="list-unstyled mt-4" style="color: #aaa;">
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Tavoli con vista lago (numero limitato)</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Celebrazioni di occasioni speciali</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Prenotazioni per gruppi (8+ persone)</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Eventi aziendali</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <form id="reservationFormInline" class="p-4 p-lg-5" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212, 175, 55, 0.3);">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control form-control-custom" placeholder="Nome e Cognome" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control form-control-custom" placeholder="Numero di Telefono" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" class="form-control form-control-custom" required>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control form-control-custom" required>
+                                    <option value="">Seleziona Orario</option>
+                                    <option>12:00</option>
+                                    <option>12:30</option>
+                                    <option>13:00</option>
+                                    <option>13:30</option>
+                                    <option>14:00</option>
+                                    <option>18:30</option>
+                                    <option>19:00</option>
+                                    <option>19:30</option>
+                                    <option>20:00</option>
+                                    <option>20:30</option>
+                                    <option>21:00</option>
+                                    <option>21:30</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control form-control-custom" required>
+                                    <option value="">Numero di Persone</option>
+                                    <option>1 Persona</option>
+                                    <option>2 Persone</option>
+                                    <option>3 Persone</option>
+                                    <option>4 Persone</option>
+                                    <option>5 Persone</option>
+                                    <option>6 Persone</option>
+                                    <option>7 Persone</option>
+                                    <option>8+ Persone</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control form-control-custom">
+                                    <option value="">Preferenza Tavolo</option>
+                                    <option>Vista Lago</option>
+                                    <option>Interno</option>
+                                    <option>Terrazza</option>
+                                    <option>Nessuna Preferenza</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control form-control-custom" rows="3" placeholder="Richieste Speciali (allergie, celebrazioni, ecc.)"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary-custom w-100">
+                                    <i class="bi bi-calendar-check me-2"></i>Prenota Ora
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">Pizzeria del Lago</div>
+                    <p>Dal 1985, nel cuore di Lecco, con la splendida bellezza del Lago di Como, serviamo sapori tradizionali italiani.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="bi bi-airplane"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 footer-links">
+                    <h6>Link Rapidi</h6>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Chi Siamo</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#specials">Specialità</a></li>
+                        <li><a href="#gallery">Galleria</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 footer-links">
+                    <h6>Informazioni</h6>
+                    <ul>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#reservationModal">Prenotazione</a></li>
+                        <li><a href="#contact">Contatti</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Termini di Utilizzo</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 footer-links">
+                    <h6>Contatti</h6>
+                    <ul>
+                        <li><i class="bi bi-geo-alt me-2"></i>Via Lungolago Cesare Battisti, 15</li>
+                        <li><i class="bi bi-geo me-2"></i>23900 Lecco (LC), Italia</li>
+                        <li><i class="bi bi-telephone me-2"></i>+39 0341 123 456</li>
+                        <li><i class="bi bi-envelope me-2"></i>info@pizzeriadellago.it</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; 2024 Pizzeria del Lago. Tutti i Diritti Riservati. | Lago di Como, Lecco, Italia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Torna Su">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- Reservation Modal -->
+    <div class="modal fade" id="reservationModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-calendar-check me-2"></i>Prenota un Tavolo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="reservationFormModal">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nome e Cognome *</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">E-mail *</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Telefono *</label>
+                                <input type="tel" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Numero di Persone *</label>
+                                <select class="form-select" required>
+                                    <option value="">Seleziona</option>
+                                    <option>1 Persona</option>
+                                    <option>2 Persone</option>
+                                    <option>3 Persone</option>
+                                    <option>4 Persone</option>
+                                    <option>5 Persone</option>
+                                    <option>6 Persone</option>
+                                    <option>7 Persone</option>
+                                    <option>8+ Persone</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Data *</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Orario *</label>
+                                <select class="form-select" required>
+                                    <option value="">Seleziona</option>
+                                    <optgroup label="Pranzo">
+                                        <option>12:00</option>
+                                        <option>12:30</option>
+                                        <option>13:00</option>
+                                        <option>13:30</option>
+                                        <option>14:00</option>
+                                    </optgroup>
+                                    <optgroup label="Cena">
+                                        <option>18:30</option>
+                                        <option>19:00</option>
+                                        <option>19:30</option>
+                                        <option>20:00</option>
+                                        <option>20:30</option>
+                                        <option>21:00</option>
+                                        <option>21:30</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Preferenza Tavolo</label>
+                                <select class="form-select">
+                                    <option value="">Nessuna Preferenza</option>
+                                    <option>Vista Lago (Limitato)</option>
+                                    <option>Interno</option>
+                                    <option>Terrazza</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Occasione Speciale</label>
+                                <select class="form-select">
+                                    <option value="">No</option>
+                                    <option>Compleanno</option>
+                                    <option>Anniversario</option>
+                                    <option>Proposta di Matrimonio</option>
+                                    <option>Pranzo di Lavoro</option>
+                                    <option>Altro</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Richieste Speciali / Note</label>
+                                <textarea class="form-control" rows="3" placeholder="Informazioni su allergie, diete speciali, dettagli della celebrazione, ecc."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="privacyCheck" required>
+                                    <label class="form-check-label" for="privacyCheck">
+                                        Ho letto e accetto la <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button type="submit" form="reservationFormModal" class="btn btn-danger">
+                        <i class="bi bi-check-circle me-2"></i>Conferma Prenotazione
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div class="modal fade" id="galleryModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-0">
+                    <img src="" alt="Immagine Galleria" class="img-fluid" id="galleryModalImage">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Pizza Modals -->
+    <div class="modal fade" id="specialModal1" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pizza del Lago</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600" alt="Pizza del Lago" class="img-fluid mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-danger mb-3">€18</h4>
+                            <p class="lead">La nostra pizza signature che riunisce i sapori più iconici del Lago di Como.</p>
+                            <h6>Ingredienti:</h6>
+                            <ul>
+                                <li>Missoltini (pesce agone essiccato del Lago di Como)</li>
+                                <li>Formaggio Taleggio DOP della Valsassina</li>
+                                <li>Capperi</li>
+                                <li>Olive nere</li>
+                                <li>Olio d'oliva Lario DOP</li>
+                                <li>Timo fresco</li>
+                            </ul>
+                            <div class="alert alert-success">
+                                <i class="bi bi-star-fill me-2"></i>La nostra pizza più richiesta!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                        <i class="bi bi-calendar-check me-2"></i>Prenota un Tavolo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="specialModal2" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">La Valsassina</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600" alt="La Valsassina" class="img-fluid mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-danger mb-3">€17</h4>
+                            <p class="lead">Armonia dolce-salata ispirata ai formaggi unici della valle della Valsassina.</p>
+                            <h6>Ingredienti:</h6>
+                            <ul>
+                                <li>Base con salsa bianca</li>
+                                <li>Taleggio DOP (stagionato 35 giorni)</li>
+                                <li>Noci biologiche</li>
+                                <li>Miele di fiori</li>
+                                <li>Rucola fresca</li>
+                                <li>Scaglie di Parmigiano Reggiano</li>
+                            </ul>
+                            <div class="alert alert-warning">
+                                <i class="bi bi-award-fill me-2"></i>Consiglio speciale dello Chef!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                        <i class="bi bi-calendar-check me-2"></i>Prenota un Tavolo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="specialModal3" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Monte Resegone</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600" alt="Monte Resegone" class="img-fluid mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-danger mb-3">€19</h4>
+                            <p class="lead">Sapori di montagna ispirati al Monte Resegone, simbolo di Lecco.</p>
+                            <h6>Ingredienti:</h6>
+                            <ul>
+                                <li>Bresaola della Valtellina IGP</li>
+                                <li>Funghi porcini freschi</li>
+                                <li>Formaggio Fontina</li>
+                                <li>Olio al tartufo bianco</li>
+                                <li>Timo fresco</li>
+                                <li>Rucola</li>
+                            </ul>
+                            <div class="alert alert-danger">
+                                <i class="bi bi-fire me-2"></i>Appena aggiunta - Da provare!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                        <i class="bi bi-calendar-check me-2"></i>Prenota un Tavolo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full Menu Modal -->
+    <div class="modal fade" id="fullMenuModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-file-pdf me-2"></i>Scarica Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center py-5">
+                    <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 4rem;"></i>
+                    <h5 class="mt-3">Menu Pizzeria del Lago 2024</h5>
+                    <p class="text-muted">Il nostro menu completo in formato PDF</p>
+                    <button class="btn btn-danger mt-3" id="downloadMenuBtn">
+                        <i class="bi bi-download me-2"></i>Scarica Menu (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Privacy Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Raccolta Dati</h6>
+                    <p>Come Pizzeria del Lago, raccogliamo il vostro nome, numero di telefono e indirizzo e-mail durante le prenotazioni. Queste informazioni vengono utilizzate esclusivamente per le conferme delle prenotazioni e per le comunicazioni relative al ristorante.</p>
+
+                    <h6>Protezione dei Dati</h6>
+                    <p>I vostri dati personali sono conservati su server sicuri e non vengono condivisi con terze parti. Operiamo in conformità con il GDPR e le leggi italiane sulla protezione dei dati.</p>
+
+                    <h6>Cookie</h6>
+                    <p>Il nostro sito web utilizza cookie per migliorare l'esperienza utente. Potete gestire le vostre preferenze sui cookie dalle impostazioni del browser.</p>
+
+                    <h6>Contatti</h6>
+                    <p>Per domande sulla nostra privacy policy, contattateci all'indirizzo info@pizzeriadellago.it.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Termini di Utilizzo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Prenotazioni</h6>
+                    <p>Le prenotazioni possono essere effettuate telefonicamente, tramite il sito web o via WhatsApp. Le cancellazioni devono essere comunicate con almeno 2 ore di anticipo.</p>
+
+                    <h6>Pagamenti</h6>
+                    <p>Accettiamo contanti, carte di credito e bancomat. Per le prenotazioni di gruppo potrebbe essere richiesto un acconto.</p>
+
+                    <h6>Allergeni</h6>
+                    <p>I prodotti del nostro menu possono contenere allergeni. Si prega di informare il personale delle vostre esigenze dietetiche speciali o allergie.</p>
+
+                    <h6>Copyright</h6>
+                    <p>Tutti i contenuti di questo sito web appartengono a Pizzeria del Lago e l'uso non autorizzato è vietato.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container">
+        <div class="toast align-items-center text-white bg-success border-0" role="alert" id="successToast">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi bi-check-circle me-2"></i>
+                    <span id="toastMessage">Operazione riuscita!</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Loading Overlay
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingOverlay').classList.add('hide');
+            }, 800);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+
+            // Active nav link based on scroll
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const navHeight = document.getElementById('mainNav').offsetHeight;
+                        const targetPosition = target.offsetTop - navHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Close mobile menu
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            bootstrap.Collapse.getInstance(navbarCollapse).hide();
+                        }
+                    }
+                }
+            });
+        });
+
+        // Back to top
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Gallery modal image
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const imgSrc = this.getAttribute('data-img');
+                document.getElementById('galleryModalImage').src = imgSrc;
+            });
+        });
+
+        // Toast function
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('successToast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.className = `toast align-items-center text-white bg-${type} border-0`;
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+        }
+
+        // Form submissions
+        document.getElementById('reservationFormInline').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('La vostra richiesta di prenotazione è stata ricevuta! Vi contatteremo al più presto.', 'success');
+            this.reset();
+        });
+
+        document.getElementById('reservationFormModal').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('La vostra richiesta di prenotazione è stata ricevuta! Riceverete una e-mail di conferma.', 'success');
+            this.reset();
+            bootstrap.Modal.getInstance(document.getElementById('reservationModal')).hide();
+        });
+
+        // Menu download button
+        document.getElementById('downloadMenuBtn').addEventListener('click', function() {
+            showToast('Download del menu in corso...', 'info');
+            // Simulate download
+            setTimeout(() => {
+                showToast('Menu scaricato con successo!', 'success');
+            }, 1500);
+            bootstrap.Modal.getInstance(document.getElementById('fullMenuModal')).hide();
+        });
+
+        // Set minimum date for reservation (today)
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelectorAll('input[type="date"]').forEach(input => {
+            input.setAttribute('min', today);
+        });
+
+        // Phone number formatting
+        document.querySelectorAll('input[type="tel"]').forEach(input => {
+            input.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0) {
+                    if (value.startsWith('39')) {
+                        value = '+' + value;
+                    } else if (!value.startsWith('+')) {
+                        value = '+39 ' + value;
+                    }
+                }
+                e.target.value = value;
+            });
+        });
+
+        // Lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Console branding
+        console.log('%cPizzeria del Lago', 'font-size: 24px; font-weight: bold; color: #C41E3A;');
+        console.log('%cLecco - Lago di Como - Dal 1985', 'font-size: 14px; color: #D4AF37;');
+        console.log('%cBuon Appetito! 🍕', 'font-size: 16px;');
+    </script>
+</body>
+</html>
